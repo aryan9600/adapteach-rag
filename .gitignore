@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pkl
+*.db
+*.sqlite3
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual Environments
+.env
+.venv/
+env/
+venv/
+ENV/
+
+# VSCode / IDE
+.vscode/
+.idea/
+*.swp
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# FastAPI + Project-specific
+uploads/
+images/
+embedding_store/
+
+# dotenv
+.env
