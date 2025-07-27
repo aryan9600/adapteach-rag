@@ -12,13 +12,13 @@ Here is a diagram illustrating the two main workflows:
 
 ```mermaid
 graph TD
-    A[User] -- POST /upload_pdf --> B(FastAPI Server);
+    A[User] -- "POST /upload_pdf" --> B(FastAPI Server);
     B -- PDF, doc_name --> C{utils.save_and_process_pdf};
     C -- Converts PDF to images --> D[pdf2image];
-    C -- Saves images --> E(Image Store: `images/{slug}/`);
+    C -- Saves images --> E("Image Store: `images/{slug}/`");
     C -- Generates embeddings --> F(ColIdefics3 Model);
     F -- Embeddings --> G{utils.save_embeddings_to_disk};
-    G -- Saves .pkl file --> H(Embedding Store: `embedding_store/{slug}.pkl`);
+    G -- Saves .pkl file --> H("Embedding Store: `embedding_store/{slug}.pkl`");
     B -- Returns doc_slug --> A;
 ```
 
@@ -27,9 +27,9 @@ graph TD
 ```mermaid
 graph TD
     subgraph "Retrieval"
-        A[User] -- POST /query --> B(FastAPI Server);
+        A[User] -- "POST /query" --> B(FastAPI Server);
         B -- doc_slug, query --> C{rag.answer_query};
-        C -- Loads embeddings --> D(Embedding Store: `embedding_store/{slug}.pkl`);
+        C -- Loads embeddings --> D("Embedding Store: `embedding_store/{slug}.pkl`");
         C -- Generates query embedding --> E(ColIdefics3 Model);
         E -- Query Embedding --> F{Similarity Search};
         D -- Page Embeddings --> F;
